@@ -1,0 +1,8 @@
+<div class="bg-dark text-white p-3 w-100">
+    <h2>Titolo: {{post?.title}}</h2>
+    <p>"{{post?.body}}"</p>
+    <div class="d-flex align-items-center">
+    <p class="m-0 me-3">Post Id: {{post?.id}}</p>
+    <button type="button" class="btn btn-success text-white" [routerLink]="['/edit-post', (post?.id)]">Modifica</button>
+  </div>
+</div>

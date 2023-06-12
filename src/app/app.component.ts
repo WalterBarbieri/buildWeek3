@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Auth } from './auth/auth.interface';
+import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'buildWeek3';
+  title = 'WalterWeek11Progetto';
+
+  user!: Auth | null;
+
+  constructor(private router: Router, private authService: AuthService) {
+    this.user = null;
+  }
+
+  ngOnInit(): void {
+    this.authService.user$.subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
 }
